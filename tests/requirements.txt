@@ -1,0 +1,14 @@
+# python_version 3.12.1
+# pip_version 24.*
+#
+# The parse_versions_from_versions_file() function in the createVenv.groovy
+# file of the Jenkins Shared Library uses the python_version comment to set
+# the version of python used.
+
+# Distributed (released) dependencies
+#
+# The python modules listed below specify a known working combination required
+# by the python code in this repository.
+pytest==8.3.3
+pytest-xdist==3.6.1
+filelock==3.16.1
