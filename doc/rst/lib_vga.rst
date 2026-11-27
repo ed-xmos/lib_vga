@@ -59,12 +59,15 @@ Pixels are packed little-endian into 32-bit frame buffer words, so each word hol
 Accessing the library software
 ==============================
 
-There are two ways to access the software in this library:
+There are three ways to access the software in this library:
 
+- Include ``lib_vga`` in your CMakeLists.txt xcommon cmake modules list (see :ref:`Usage <usage>`).
+- Directly clone the Git repository from `XMOS GitHub <https://github.com/xmos>`_.
 - Download the latest release ZIP package from the `XMOS Website <https://www.xmos.com/libraries/>`_ and extract it to a chosen sandbox directory.
-- Clone the Git repository from `XMOS GitHub <https://github.com/xmos>`_.
 
 The ZIP file download is the recommended option for most users, as it is a quick way to get started with the library.
+
+.. _usage:
 
 *****
 Usage
@@ -78,11 +81,7 @@ To use this library in an application include ``lib_vga`` in the application's `
 
 .. code-block:: cmake
 
-    set(APP_DEPENDENT_MODULES "lib_vga")
-
-.. note:: Dependent modules should be pinned to release versions where possible, otherwise the
-   latest commit on the `develop` branch will be used.  For further details on managing modules,
-   pinning to a release version and other options, please see the page `xcommon-cmake Dependency Management <https://www.xmos.com/documentation/XM-015090-PC/html/doc/dependency_management.html>`_.
+    set(APP_DEPENDENT_MODULES "lib_vga(0.1.0)")
 
 All ``lib_vga`` functions can be accessed via the ``vga.h`` header file, for example:
 
@@ -380,7 +379,7 @@ the ``-D`` definitions in the example's ``CMakeLists.txt``.
    :align: center
 
    The example application output (320x240, 4 bpp IRGB) on a monitor, which reports
-   the signal as 640x480 @ 60 Hz
+   the signal as 640x480 @ 60 Hz due to the pixel doubling applied by the library.
 
 Building the example
 ====================
@@ -509,6 +508,26 @@ API Reference
 .. doxygendefine:: VGA_FRAME_BUFF_WORDS
 
 .. doxygendefine:: VGA_FRAME_BUFF_SIZE
+
+.. doxygendefine:: VGA_H_ACTIVE
+
+.. doxygendefine:: VGA_H_FRONT
+
+.. doxygendefine:: VGA_H_SYNC
+
+.. doxygendefine:: VGA_H_BACK
+
+.. doxygendefine:: VGA_H_TOTAL
+
+.. doxygendefine:: VGA_V_ACTIVE
+
+.. doxygendefine:: VGA_V_FRONT
+
+.. doxygendefine:: VGA_V_SYNC
+
+.. doxygendefine:: VGA_V_BACK
+
+.. doxygendefine:: VGA_V_TOTAL
 
 .. doxygenfunction:: vga_pixels_per_word
 

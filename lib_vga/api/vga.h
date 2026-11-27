@@ -35,38 +35,48 @@ typedef struct {
                                            so it may be updated at any time to swap buffers without tearing. */
 } vga_config_t;
 
-// Horizontal timing in pixels (industry standard 640x480 @ 60 Hz).
-// Each value may be overridden on the compiler command line, e.g. to shorten
-// frames when testing under simulation.
 #ifndef VGA_H_ACTIVE
+/** Active horizontal pixels (default: 640).
+ *
+ * This and the other horizontal and vertical timing values may be overridden
+ * on the compiler command line, e.g. to shorten frames during simulation.
+ */
 #define VGA_H_ACTIVE  640
 #endif
 #ifndef VGA_H_FRONT
+/** Horizontal front porch in pixels (default: 16). */
 #define VGA_H_FRONT    16
 #endif
 #ifndef VGA_H_SYNC
+/** Horizontal sync pulse width in pixels (default: 96). */
 #define VGA_H_SYNC     96
 #endif
 #ifndef VGA_H_BACK
+/** Horizontal back porch in pixels (default: 48). */
 #define VGA_H_BACK     48
 #endif
 
+/** Total pixels per horizontal line, including blanking. */
 #define VGA_H_TOTAL   (VGA_H_ACTIVE + VGA_H_FRONT + VGA_H_SYNC + VGA_H_BACK)
 
-// Vertical timing in lines (industry standard 640x480 @ 60 Hz).
 #ifndef VGA_V_ACTIVE
+/** Active vertical lines (default: 480). */
 #define VGA_V_ACTIVE  480
 #endif
 #ifndef VGA_V_FRONT
+/** Vertical front porch in lines (default: 10). */
 #define VGA_V_FRONT    10
 #endif
 #ifndef VGA_V_SYNC
+/** Vertical sync pulse width in lines (default: 2). */
 #define VGA_V_SYNC      2
 #endif
 #ifndef VGA_V_BACK
+/** Vertical back porch in lines (default: 33). */
 #define VGA_V_BACK     33
 #endif
 
+/** Total lines per frame, including blanking. */
 #define VGA_V_TOTAL   (VGA_V_ACTIVE + VGA_V_FRONT + VGA_V_SYNC + VGA_V_BACK)
 
 /** Frame buffer size in 32-bit words for a resolution and colour depth.
